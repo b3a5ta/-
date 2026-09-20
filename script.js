@@ -30,6 +30,9 @@ const SOUNDS = {
 
 
 const EYES = document.querySelector('.cake__eyes');
+const getRestingScale = () =>
+window.matchMedia('(max-width: 600px)').matches ? 0.8 : 0.7;
+
 const BLINK = eyes => {
   gsap.set(eyes, { scaleY: 1 });
   if (eyes.BLINK_TL) eyes.BLINK_TL.kill();
@@ -201,7 +204,7 @@ const RESET = () => {
     scale: 0,
     transformOrigin: '50% 50%' });
 
-  set('.birthday-button', { scale: 0.6, x: 0, y: 0 });
+  set('.birthday-button', { scale: getRestingScale(), x: 0, y: 0 });
   set('.birthday-button__cake', { display: 'none' });
   set('.cake__candle', { scaleY: 0, transformOrigin: '50% 100%' });
 };
